@@ -1,0 +1,132 @@
+/* Animaciones*/
+@keyframes h1 {
+  10% {
+    transform: translatex(-50rem);
+  }
+
+  20% {
+    transform: translateY(-50rem);
+  }
+
+  40% {
+    transform: translateY(0.5rem);
+  }
+
+  50% {
+    transform: translateY(-3rem);
+  }
+
+  60% {
+    transform: translateY(0rem);
+  }
+
+  70% {
+    transform: translateY(-1.67rem);
+  }
+
+  80% {
+    transform: translateY(0rem);
+  }
+
+  90% {
+    transform: translateY(-0.84rem);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes h1Responsive {
+  15% {
+    transform: translateY(50rem);
+  }
+
+  25% {
+    transform: translateX(-50rem);
+    opacity: 0;
+  }
+
+  40% {
+    transform: translateY(-50rem);
+    opacity: 1;
+  }
+
+  45%{
+    transform: translateY(0.5rem);
+  }
+
+  50% {
+    transform: translateY(-3rem);
+  }
+
+  60% {
+    transform: translateY(0rem);
+  }
+
+  70% {
+    transform: translateY(-1.67rem);
+  }
+
+  80% {
+    transform: translateY(0rem);
+  }
+
+  90% {
+    transform: translateY(-0.84rem);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes img {
+  25% {
+    transform: rotateY(-90deg);
+  }
+
+  50% {
+    transform: rotateY(-180deg);
+  }
+
+  75% {
+    transform: rotateY(-270deg);
+  }
+
+  100% {
+    transform: rotateY(-360deg);
+  }
+}
+
+@keyframes stop_image {
+  form {
+    transform: rotateY(0deg);
+  }
+
+  to {
+    transform: rotateY(0deg);
+  }
+}
+
+@keyframes ahover {
+  10% {
+    transform: translateX(30rem);
+  }
+
+  25% {
+    transform: translateY(-30rem);
+  }
+
+  50% {
+    transform: translateX(-30rem);
+  }
+
+  75% {
+    transform: translateY(0rem);
+  }
+
+  100% {
+    transform: translateX(0rem);
+  }
+}

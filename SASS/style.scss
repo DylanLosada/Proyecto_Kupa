@@ -1,0 +1,526 @@
+// Variables
+$colorPrincipal: #ff8800;
+$degradado: rgb(255, 196, 0);
+
+// Funciones
+@mixin outXMargin {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+@mixin menuDeProductos {
+    display: block;
+    color: rgb(255, 255, 255);
+    font-family: "nero", sans-serif, Arial;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: all 300ms;
+}
+
+@mixin tarjetaPreguntas-container {
+    border: none;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-radius: none;
+}
+
+@mixin tarjetaPreguntas-header {
+    border: none;
+    background-color: transparent;
+}
+
+@mixin h2Index {
+    font-weight: bold;
+    font-size: 2.3rem;
+}
+
+@mixin textoFooter {
+    width: 100%;
+    font-family: "nevis", sans-serif;
+    font-size: 1.5rem;
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
+@mixin pIndex {
+    font-size: 1.5rem;
+}
+
+@mixin paddingSection {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+/* Estilos Generales */
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+html {
+    font-size: 10px;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-image: linear-gradient(45deg,
+            transparent 20%,
+            black 25%,
+            transparent 25%),
+        linear-gradient(-45deg, transparent 20%, black 25%, transparent 25%),
+        linear-gradient(-45deg, transparent 75%, black 80%, transparent 0),
+        radial-gradient(gray 2px, transparent 0);
+    background-size: 30px 30px, 30px 30px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Carrusel */
+#slider{
+    @include outXMargin();
+    height: 86vh;
+    // height: 650px;
+
+    a{
+        width: 6%;
+    }
+}
+
+#slider-container {
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+}
+
+.slider-container__innerIndex {
+    width: 100%;
+    @include outXMargin();
+}
+
+.banner__container{
+    display: block;
+    width: 100%;
+    @include outXMargin();
+    height: 100%;
+    // background-color: rgb(0, 170, 248);
+    background-image: url("../assets/imgs/fondoPrimerSlider.png");
+
+    div{
+        height: 100%;
+    }
+}
+
+.banner__container--maderaColores{
+    background-image: url("../assets/imgs/fondoSegundoSlider.jpg");
+}
+
+.banner__container--madera{
+    background-image: url("../assets/imgs/fondoTercerSlider.jpg");
+    background-size: cover;
+
+}
+
+.banner__container-title{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: flex-start;
+    justify-content: center;
+
+    h2{
+        @include h2Index();
+        color: rgb(255, 255, 255);
+        text-shadow: 0px 1px 2px $colorPrincipal, 1px 2px 3px $colorPrincipal,
+        2px 3px 4px $colorPrincipal;
+        letter-spacing: 0.1rem;
+        font-family: sans-serif;
+        font-size: 3rem;
+        margin-bottom: 3rem;
+        text-transform: uppercase;
+    }
+
+    p{
+        font-family: sans-serif;
+        font-size: 1.8rem;
+        color: #000000;
+        margin-bottom: 4rem;
+    }
+}
+
+.h2-responsive{
+    display: none;
+}
+
+.p-responsive{
+    display: none;
+}
+
+.banner__container-title--madera{
+    p{
+        color: rgb(255, 255, 255);
+        font-weight: bold;
+    }
+}
+
+/* Fin Carrusel */
+
+/* Cards Responsive */
+#cardsResponsive{
+    display: none;
+}
+
+.cafe-2, .cafe-3, .regalo-2, .regalo-3, .cafe-4, .regalo-4{
+    display: none;
+}
+
+/* Acordeon */
+#acordion-container {
+    width: 70%;
+    margin: 0px auto;
+}
+
+/*Fin  Acordeon */
+
+/* Productos adaptados para móvil */
+.products__section-index-responsive{
+    display: none;
+}
+
+/*Contenido Principal--Index  */
+
+#main-index {
+    display: grid;
+    grid-template-columns: auto;
+    width: 85%;
+    /* width: 82.3%; */
+    margin: 0px auto;
+    margin-top: 5rem;
+    margin-bottom: 4rem;
+}
+
+.product__destacado-container{
+    margin-bottom: 1.5rem;
+}
+
+.products__destacado-container-a {
+    border-radius: 2rem;
+    text-decoration: none;
+    div {
+        span {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.3rem;
+            letter-spacing: 0.2rem;
+            padding: 2rem;
+            position: absolute;
+            border: 0px;
+            border-bottom-right-radius: 3rem;
+        }
+    }
+}
+
+.products__destacado-container-a:hover{
+    text-decoration: none;
+}
+
+.products__destacado-container-a:hover>.h3-producto-index {
+    background-color: black;
+    color: #ff8800;
+}
+
+.product__destacado--margin{
+    justify-content: space-around;
+}
+
+.products__destacado-container-a-footer{
+    h3{
+        color: black;
+        padding: 3rem;
+    }
+}
+
+.products__destacado-container-a-footer-name:hover{
+    color: $colorPrincipal;
+}
+
+.product__destacado-responsive{
+    display: none;
+}
+
+.products__section-index-producto-img {
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.h-custom {
+    min-height: 20px;
+}
+
+.product__destacado>div {
+    margin: 0px;
+    flex-basis: 30%;
+}
+
+.product__destacado--margin {
+    margin-bottom: 6rem;
+}
+
+
+.products__title {
+    width: 100%;
+    padding: 2rem;
+    background-color: white;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 1px 2px 3px rgba(0, 0, 0, 0.3),
+        2px 3px 4px rgba(0, 0, 0, 0.3), 3px 4px 5px rgba(0, 0, 0, 0.3),
+        4px 5px 6px rgba(0, 0, 0, 0.3), 5px 6px 7px rgba(0, 0, 0, 0.3);
+    margin-bottom: 3rem;
+}
+
+.product__title-h2 {
+    width: 100%;
+    font-family: "nero", sans-serif;
+    line-height: 6rem;
+    font-size: 3.4rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    background-color: black;
+    color: rgb(255, 255, 255);
+    text-shadow: 0px 1px 2px $colorPrincipal, 1px 2px 3px $colorPrincipal,
+        2px 3px 4px $colorPrincipal;
+    text-align: center;
+    margin: 0px;
+}
+
+.products {
+    width: 100%;
+}
+
+.products__section-index {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+/* CSS para el contenido de la página acceder */
+
+.products-login__container {
+    min-height: 70vh;
+    background-image: url("../assets/imgs/1366_2000.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.products-login__container-form label {
+    font-size: 1.5rem;
+}
+
+/* Aside Index */
+#newsletter-index {
+    width: 100%;
+    box-sizing: content-box;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-bottom: 10rem;
+}
+
+
+.newsletter-index__tarjetas{
+    margin-top: 9rem;
+}
+
+.newsletter-index__bg {
+    width: 100%;
+    background-image: url("../assets/imgs/granocafe.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 50vh;
+}
+
+/* Aside */
+#aside {
+    justify-self: end;
+    width: 91%;
+}
+
+.aside-sticky__container {
+    position: sticky;
+    top: 0;
+}
+
+.redes {
+    min-height: 30rem;
+    border: 1px solid #ccc;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 1px 2px 3px rgba(0, 0, 0, 0.3),
+        2px 3px 4px rgba(0, 0, 0, 0.3), 3px 4px 5px rgba(0, 0, 0, 0.3),
+        4px 5px 6px rgba(0, 0, 0, 0.3), 5px 6px 7px rgba(0, 0, 0, 0.3);
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 6rem;
+
+    div {
+        margin: 2rem auto;
+    }
+}
+
+.redes__div {
+    width: 95%;
+}
+
+.margin {
+    display: block;
+    width: 25%;
+    margin: 0px auto;
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.outmargin {
+    margin-bottom: 0px;
+}
+
+/* Aside Index */
+
+.newsletter-index-carteles {
+    margin-top: 6rem;
+    @include outXMargin();
+}
+
+.imgFeliz-2{
+    display: none;
+}
+
+.newsletter-index__tarjetas-container{
+    justify-content: center;
+}
+
+.newsletter-index__tarjetas-container-promo-tarjeta{
+    @include outXMargin();
+    flex-direction: row !important;
+    img{
+        width: 50%;
+    }
+}
+
+.newsletter {
+    margin-right: 3rem;
+    width: 30%;
+    min-height: 10%;
+    border: 1px solid #ccc;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 1px 2px 3px rgba(0, 0, 0, 0.3),
+        2px 3px 4px rgba(0, 0, 0, 0.3), 3px 4px 5px rgba(0, 0, 0, 0.3),
+        4px 5px 6px rgba(0, 0, 0, 0.3), 5px 6px 7px rgba(0, 0, 0, 0.3);
+    background-color: rgb(255, 255, 255);
+
+    form{
+        input{
+            width: 75%;
+        }
+    }
+}
+
+
+
+.bg-custom-beneficio {
+    background-color: #b9d8ea;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 1px 2px 3px rgba(0, 0, 0, 0.3),
+        2px 3px 4px rgba(0, 0, 0, 0.3), 3px 4px 5px rgba(0, 0, 0, 0.3),
+        4px 5px 6px rgba(0, 0, 0, 0.3), 5px 6px 7px rgba(0, 0, 0, 0.3);
+}
+
+.bg-custom-oferta {
+    background-color: #f8e5e3;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 1px 2px 3px rgba(0, 0, 0, 0.3),
+        2px 3px 4px rgba(0, 0, 0, 0.3), 3px 4px 5px rgba(0, 0, 0, 0.3),
+        4px 5px 6px rgba(0, 0, 0, 0.3), 5px 6px 7px rgba(0, 0, 0, 0.3);
+}
+
+.a-custom {
+    height: auto;
+    margin-top: 0px;
+}
+
+.h2-promocion {
+    @include h2Index;
+    margin-bottom: 3rem;
+}
+
+.p-promocion {
+    @include pIndex;
+}
+
+.anchoDivPadre-custom {
+    min-width: 10px;
+}
+
+.anchoDivHijo-custom {
+    flex-basis: 40%;
+}
+
+.newsletter-index-container {
+    width: 100%;
+    background-color: black;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.newsletter-index-contenido {
+    width: 90%;
+    background-color: white;
+    height: 44rem;
+}
+
+#newsletter-index h3 {
+    margin: 0px auto;
+    text-align: center;
+    width: 97%;
+    background-color: #f2f3f2;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+    font-family: "nero";
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.form-news {
+    margin: 0px auto;
+    width: 95%;
+
+    label {
+        display: block;
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 1.2rem;
+    }
+
+    input {
+        display: block;
+        width: 85%;
+        margin: 0px auto;
+        padding: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+// Importo los demas archivos .scss
+@import "header";
+@import "productos";
+@import "info";
+@import "registrarse";
+@import "sobreNosotras";
+@import "contacto";
+@import "compraProducto";
+@import "footer";
+@import "preguntasFrecuentes";
+@import "animaciones";
+@import "mediasQuerys";
+
+

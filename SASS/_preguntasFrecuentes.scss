@@ -1,0 +1,74 @@
+#main-preguntas {
+    width: 95%;
+    margin: 0px auto;
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+}
+
+#acordeon{
+    border-left: none;
+    border-right: none;
+}
+
+.products__preguntasFrecuentes {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    background-color: #f6f9fc;
+}
+
+
+.products__preguntasFrecuentes-container {
+    width: 65%;
+    background-color: #f6f9fc;
+    border: none;
+    @include outXMargin;
+}
+
+.tarjetaPreguntas-container {
+    @include tarjetaPreguntas-container;
+}
+
+.products__preguntasFrecuentes-container-cards-body{
+    border: none;
+    font-size: 1.3rem;
+}
+
+.products__preguntasFrecuentes-container-cards{
+    border-top: 2px dashed $colorPrincipal;
+    border-bottom: 2px dashed $colorPrincipal;
+    border-left: none;
+    border-right: none;
+
+    button{
+        width: 100% !important;
+        font-family: "nero", Arial, Helvetica, sans-serif;
+        font-size: 2.8rem;
+        letter-spacing: 0.1rem;
+        text-decoration: none;
+        color: black;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        text-decoration: none;
+
+        i{
+            align-items: center;
+        }
+    }
+}
+
+.products__preguntasFrecuentes-container-cards button:hover{
+    text-decoration: none;
+    color: inherit;
+}
+
+.products__preguntasFrecuentes-container-cards--outBorder{
+    border-top: none;
+}
+
+.products__preguntasFrecuentes-container-cards-header{
+    border: none;
+    margin: 0px;
+    padding: 1rem;
+    border-radius: 0px;
+}

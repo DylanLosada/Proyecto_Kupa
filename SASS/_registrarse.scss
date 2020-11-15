@@ -1,0 +1,22 @@
+/* CSS para la pagina de registrarse */
+.products__log {
+    width: 100%;
+}
+
+.h2__form-log {
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-rows: auto;
+    column-gap: 4rem;
+}
+
+.h2__form-condition {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.h2__form-condition-h4 {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
