@@ -1,5 +1,5 @@
 
-document.addEventListener('load', function () {
+document.addEventListener('DOMContentLoaded', function () {
     const dias = ['Lunes', 'Marter', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
 
     console.log('Los dias pares son:')
