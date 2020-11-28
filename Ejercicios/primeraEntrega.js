@@ -15,14 +15,29 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Menú para crear un nuevo producto.
+    let listaProductos = [];
     while(true){
+        let nombre = prompt('Para crear un nuevo producto: (Introducir "salir" para salir)\nIntroduzca el nombre del producto');
 
-        let nombre = prompt('Para crear un nuevo producto:\nIntroduzca el nombre del producto');
+        if(nombre.toLowerCase() === 'salir'){
+            break;
+        }
+
         let precio = prompt('Introduzca el precio del producto');
+
+        if(precio.toLowerCase() === 'salir'){
+            break;
+        }
+
         let imagen = prompt('Introduzca la ruta de la imágen');
+
+        if(imagen.toLowerCase() === 'salir'){
+            break;
+        }
 
         //  JS no puede detectar otra operación con el prompt si el mismo aún no existe.
         if(nombre && precio && imagen){
+
             nombre.trim();
             Number(precio.trim());
             imagen.trim();
@@ -39,8 +54,8 @@ document.addEventListener('DOMContentLoaded', function () {
             else{
                 let productoCreado = registroProducto(nombre, precio, imagen);
                 alert(`Se ah creado correctamente el producto: ${nombre.toUpperCase()}\nPuede observarlo abriendo la consola de desarrollador en su navegador`);
-                console.log(productoCreado);
-                break;
+                listaProductos.push(productoCreado);
+                console.log(listaProductos);
             }
         }
         else{
