@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Menú para crear un nuevo producto.
-    let listaProductos = [];
+    let carrito = [];
     while(true){
         let nombre = prompt('Para crear un nuevo producto: (Introducir "salir" para salir)\nIntroduzca el nombre del producto');
 
@@ -54,8 +54,8 @@ document.addEventListener('DOMContentLoaded', function () {
             else{
                 let productoCreado = registroProducto(nombre, precio, imagen);
                 alert(`Se ah creado correctamente el producto: ${nombre.toUpperCase()}\nPuede observarlo abriendo la consola de desarrollador en su navegador`);
-                listaProductos.push(productoCreado);
-                console.log(listaProductos);
+                carrito.push(productoCreado);
+                console.log(carrito);
             }
         }
         else{
