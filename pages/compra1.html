@@ -66,7 +66,7 @@
                             Carrito</a>
                     </div>
                     <div class="row w-100">
-                        <button class="btn btn-danger col-lg-12 w-100"><i class="far fa-credit-card"></i>Finalizar
+                        <button class="btn btn-danger col-lg-12 w-100" data-toggle="modal" data-target="#acceder-buttom><i class="far fa-credit-card"></i>Finalizar
                             Compra</button>
                     </div>
 
@@ -410,12 +410,12 @@
         </div>
         <div class="compra__container">
             <!--Especie de carrito de compras-->
-            <div class="compra__container-producto row">
+            <div id="productsContainer" class="compra__container-producto row">
 
                 <div class="compra__container-producto-info col-xl-5 col-lg-6 col-md-12 d-flex justify-content-start">
                     <div
                         class="row w-100 flex-row justify-content-center p-4 compra__container-producto-info-nombre d-none d-sm-none d-md-none d-lg-flex d-xl-flex">
-                        <h3 class="reviews__h3 mt-0 mb-2">Taza Onda Tipo Ingles</h3>
+                        <h3 id="nameProduct" class="reviews__h3 mt-0 mb-2">Taza Onda Tipo Ingles</h3>
                         <i class="far fa-heart compra__container-producto-heart"></i>
                     </div>
 
@@ -443,7 +443,7 @@
                                 </div>
                                 <div
                                     class="compra__container-producto-info-precio-off compra__container-producto-info-precio-off--maxWidth row">
-                                    <span class="compra__container-producto-info-precio-off-with col-6">
+                                    <span id="priceProduct" class="compra__container-producto-info-precio-off-with col-6">
                                         $ 360,90
                                     </span>
                                     <div class="col-6 compra__container-producto-info-precio-off-cantidad p-0">
@@ -574,13 +574,13 @@
                         </div>
                     </div>
                     <div id="imagenProducto" class="compra__container-imagen-img">
-                        <img class="img-fluid rounded-lg order-1 visible compra__container-imagen-img-1"
+                        <img id="imageProduct" class="img-fluid rounded-lg order-1 visible compra__container-imagen-img-1 imageProduct"
                             src="../assets/imgs/tazacafekupa(1).jpg" alt="Producto">
-                        <img class="img-fluid rounded-lg order-1 invisible compra__container-imagen-img-2"
+                        <img class="img-fluid rounded-lg order-1 invisible compra__container-imagen-img-2 imageProduct"
                             src="../assets/imgs/tazacafekupa(1).jpg" alt="Producto">
-                        <img class="img-fluid rounded-lg order-1 invisible compra__container-imagen-img-3"
+                        <img class="img-fluid rounded-lg order-1 invisible compra__container-imagen-img-3 imageProduct"
                             src="../assets/imgs/tazacafekupa(1).jpg" alt="Producto">
-                        <img class="img-fluid rounded-lg order-1 invisible compra__container-imagen-img-4"
+                        <img class="img-fluid rounded-lg order-1 invisible compra__container-imagen-img-4 imageProduct"
                             src="../assets/imgs/tazacafekupa(1).jpg" alt="Producto">
                     </div>
                     <div class="row compra__container-imagen-imgSelect">
@@ -597,9 +597,9 @@
                     </div>
 
                     <div class="row d-flex align-items-center col-12 p-0 compra__container-imagen-button">
-                        <button type="submit"
-                            class="btn btn-outline-success w-100 mt-2 compra__container-imagen-button-selector"><i
-                                class="fas fa-shopping-basket"></i> Agregar al carrito</button>
+                        <button id="addToCarritoFeatured" type="submit"
+                            class="btn btn-outline-success w-100 mt-2 compra__container-imagen-button-selector">
+                            <i id="addToCarritoFeaturedI" class="fas fa-shopping-basket"></i> Agregar al carrito</button>
                     </div>
                 </div>
 
@@ -1704,7 +1704,7 @@
 
 </body>
 <!-- Js destinado al proyecto del carrito -->
-<script type="text/javascript" src="../Ejercicios/carritoProyecto.js"></script>
+<script type="text/javascript" src="../Ejercicios/carritoProductos.js"></script>
 
 <!-- JS destinado al proyecto de Desarrollo Web -->
 <script type="text/javascript" src="../js/dropDownHeader.js"></script>

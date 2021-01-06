@@ -56,66 +56,25 @@
 
             <div class="log__carrito-ventana d-flex flex-column invisible">
                 <div class="log__carrito-ventana-productos">
-                    <ul>
-                        <li class="log__carrito-ventana-productos-li li-item1">
-                            <i class="fas fa-trash-alt item1"></i>
-                            <div class="log__carrito-ventana-productos-producto">
-                                <img src="../assets/imgs/tazaColorCafeMini.png" class="rounded-lg">
-                                <p>Taza Marron<span>$ 500</span></p>
-                            </div>
-
-                        </li>
-
-                        <li class="log__carrito-ventana-productos-li li-item2">
-                            <i class="fas fa-trash-alt item2"></i>
-                            <div class="log__carrito-ventana-productos-producto">
-                                <img src="../assets/imgs/tazonFrutasMini2.png" class="rounded-lg">
-                                <p>Tazón Blanco<span>$ 600</span></p>
-                            </div>
-                        </li>
-
-                        <li class="log__carrito-ventana-productos-li li-item3">
-                            <i class="fas fa-trash-alt item3"></i>
-                            <div class="log__carrito-ventana-productos-producto">
-                                <img src="../assets/imgs/tazonCucharaMini.png" class="rounded-lg">
-                                <p>Tazón Estilo Madera<span>$ 600</span></p>
-                            </div>
-                        </li>
-
-                        <li class="log__carrito-ventana-productos-li li-item4">
-                            <i class="fas fa-trash-alt item4"></i>
-                            <div class="log__carrito-ventana-productos-producto">
-                                <img src="../assets/imgs/bolsaCafeMini.png" class="rounded-lg">
-                                <p>Café Oscuro<span>$ 800</span></p>
-                            </div>
-                        </li>
-
-                        <li class="log__carrito-ventana-productos-li li-item5">
-                            <i class="fas fa-trash-alt item5"></i>
-                            <div class="log__carrito-ventana-productos-producto">
-                                <img src="../assets/imgs/tazonesApiladosMini.png" class="rounded-lg">
-                                <p>Tazones Azules<span>$ 2000</span></p>
-                            </div>
-                        </li>
-
-                        <li class="log__carrito-ventana-productos-li li-item6">
-                            <i class="fas fa-trash-alt item6"></i>
-                            <div class="log__carrito-ventana-productos-producto">
-                                <img src="../assets/imgs/tazonesAlimentosMini.png" class="rounded-lg">
-                                <p>Tazones Color Celeste<span>$ 1200</span></p>
-                            </div>
-                        </li>
+                    <ul class="d-flex align-items-center justify-content-center h-100">
+                        <div class="log__carrito-ventana-productos-sadFace d-flex flex-column justify-content-center">
+                            <h2>Estoy vacío !!!</h2>
+                            <h4>
+                                <i class="fas fa-sad-tear"></i>
+                            </h4>
+                            <a href="" type=""></a>
+                        </div>
                     </ul>
                 </div>
                 <div class="log__carrito-ventana-botones d-flex">
                     <div class="row w-100 log__carrito-ventana-botones-total">
-                        <p class="col-6 p-4 mb-0">SubTotal: <span>$ 5700</span></p>
+                        <p class="col-6 p-4 mb-0">SubTotal: <span id = "totalPrice">$ 5700</span></p>
                         <a class="col-6 pl-2 pr-2 btn btn-outline-success mt-0" href="./productos.html"><i
                                 class="fas fa-tags"></i> Expandir
                             Carrito</a>
                     </div>
                     <div class="row w-100">
-                        <button class="btn btn-danger col-lg-12 w-100"><i class="far fa-credit-card"></i>Finalizar
+                        <button class="btn btn-danger col-lg-12 w-100" data-toggle="modal" data-target="#acceder-buttom><i class="far fa-credit-card"></i>Finalizar
                             Compra</button>
                     </div>
 
@@ -623,6 +582,10 @@
 
     </footer>
 </body>
+<!-- Js destinado al proyecto del carrito -->
+<script type="text/javascript" src="../Ejercicios/carritoProyecto.js"></script>
+
+<!-- JS destinado al proyecto de Desarrollo Web -->
 <script type="text/javascript" src="../js/dropDownHeader.js"></script>
 <script type="text/javascript" src="../js/headerFixed.js"></script>
 <script type="text/javascript" src="../js/menuResponsiveDrop.js"></script>

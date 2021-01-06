@@ -59,66 +59,25 @@
 
             <div class="log__carrito-ventana d-flex flex-column invisible">
                 <div class="log__carrito-ventana-productos">
-                    <ul>
-                        <li class="log__carrito-ventana-productos-li li-item1">
-                            <i class="fas fa-trash-alt item1"></i>
-                            <div class="log__carrito-ventana-productos-producto">
-                                <img src="../assets/imgs/tazaColorCafeMini.png" class="rounded-lg">
-                                <p>Taza Marrón<span>$ 500</span></p>
-                            </div>
-
-                        </li>
-
-                        <li class="log__carrito-ventana-productos-li li-item2">
-                            <i class="fas fa-trash-alt item2"></i>
-                            <div class="log__carrito-ventana-productos-producto">
-                                <img src="../assets/imgs/tazonFrutasMini2.png" class="rounded-lg">
-                                <p>Tazón Blanco<span>$ 600</span></p>
-                            </div>
-                        </li>
-
-                        <li class="log__carrito-ventana-productos-li li-item3">
-                            <i class="fas fa-trash-alt item3"></i>
-                            <div class="log__carrito-ventana-productos-producto">
-                                <img src="../assets/imgs/tazonCucharaMini.png" class="rounded-lg">
-                                <p>Tazón Estilo Madera<span>$ 600</span></p>
-                            </div>
-                        </li>
-
-                        <li class="log__carrito-ventana-productos-li li-item4">
-                            <i class="fas fa-trash-alt item4"></i>
-                            <div class="log__carrito-ventana-productos-producto">
-                                <img src="../assets/imgs/bolsaCafeMini.png" class="rounded-lg">
-                                <p>Café Oscuro<span>$ 800</span></p>
-                            </div>
-                        </li>
-
-                        <li class="log__carrito-ventana-productos-li li-item5">
-                            <i class="fas fa-trash-alt item5"></i>
-                            <div class="log__carrito-ventana-productos-producto">
-                                <img src="../assets/imgs/tazonesApiladosMini.png" class="rounded-lg">
-                                <p>Tazones Azules<span>$ 2000</span></p>
-                            </div>
-                        </li>
-
-                        <li class="log__carrito-ventana-productos-li li-item6">
-                            <i class="fas fa-trash-alt item6"></i>
-                            <div class="log__carrito-ventana-productos-producto">
-                                <img src="../assets/imgs/tazonesAlimentosMini.png" class="rounded-lg">
-                                <p>Tazones Color Celeste<span>$ 1200</span></p>
-                            </div>
-                        </li>
+                    <ul class="d-flex align-items-center justify-content-center h-100">
+                        <div class="log__carrito-ventana-productos-sadFace d-flex flex-column justify-content-center">
+                            <h2>Estoy vacío !!!</h2>
+                            <h4>
+                                <i class="fas fa-sad-tear"></i>
+                            </h4>
+                            <a href="" type=""></a>
+                        </div>
                     </ul>
                 </div>
                 <div class="log__carrito-ventana-botones d-flex">
                     <div class="row w-100 log__carrito-ventana-botones-total">
-                        <p class="col-6 p-4 mb-0">SubTotal: <span>$ 5700</span></p>
+                        <p class="col-6 p-4 mb-0">SubTotal: <span id = "totalPrice">$ 5700</span></p>
                         <a class="col-6 pl-2 pr-2 btn btn-outline-success mt-0" href="./productos.html"><i
                                 class="fas fa-tags"></i> Expandir
                             Carrito</a>
                     </div>
                     <div class="row w-100">
-                        <button class="btn btn-danger col-lg-12 w-100"><i class="far fa-credit-card"></i>Finalizar
+                        <button class="btn btn-danger col-lg-12 w-100" data-toggle="modal" data-target="#acceder-buttom><i class="far fa-credit-card"></i>Finalizar
                             Compra</button>
                     </div>
 
@@ -460,7 +419,7 @@
 
     <main id="main-products">
         <!--Tabala con caracteristicas de los productos-->
-        <div class="products-productos">
+        <div id="productsContainer" class="products-productos">
 
             <div class="products__title product__title-flex">
                 <h2 class="product__title-h2--form">NUESTROS PRODUCTOS</h2>
@@ -499,7 +458,7 @@
 
             <section class="product__section-productos">
 
-                <div class="row w-100 ml-0 mr-0 product__section-productos-responsive">
+                <div id='tazaContainer' class="row w-100 ml-0 mr-0 product__section-productos-responsive">
                     <article class="flip-card col-lg-3 col-md-4">
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
@@ -518,8 +477,8 @@
                                     </button>
                                 </div>
                                 <h3>Taza a Lunares</h3>
-                                <p>$ 400.00</p>
-                                <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                <p>$ 400,00</p>
+                                <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                             </div>
                         </div>
                     </article>
@@ -544,8 +503,8 @@
                                     </button>
                                 </div>
                                 <h3>Taza con Rayas</h3>
-                                <p>$ 400.00</p>
-                                <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                <p>$ 400,00</p>
+                                <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                             </div>
                         </div>
                     </article>
@@ -568,8 +527,8 @@
                                     </button>
                                 </div>
                                 <h3>Taza con Leyenda</h3>
-                                <p>$ 400.00</p>
-                                <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                <p>$ 400,00</p>
+                                <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                             </div>
                         </div>
                     </article>
@@ -593,8 +552,8 @@
                                     </button>
                                 </div>
                                 <h3>Taza Love x Life</h3>
-                                <p>$ 400.00</p>
-                                <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                <p>$ 400,00</p>
+                                <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                             </div>
                         </div>
                     </article>
@@ -619,8 +578,8 @@
                                     </button>
                                 </div>
                                 <h3>Taza Gastada</h3>
-                                <p>$ 400.00</p>
-                                <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                <p>$ 400,00</p>
+                                <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                             </div>
                         </div>
                     </article>
@@ -643,8 +602,8 @@
                                     </button>
                                 </div>
                                 <h3>Tazas Naranjas</h3>
-                                <p>$ 600.00</p>
-                                <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                <p>$ 600,00</p>
+                                <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                             </div>
                         </div>
                     </article>
@@ -667,8 +626,8 @@
                                     </button>
                                 </div>
                                 <h3>Taza Abrigo</h3>
-                                <p>$ 450.00</p>
-                                <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                <p>$ 450,00</p>
+                                <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                             </div>
                         </div>
                     </article>
@@ -690,8 +649,8 @@
                                     </button>
                                 </div>
                                 <h3>Taza Corazón</h3>
-                                <p>$ 423.00</p>
-                                <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                <p>$ 423,00</p>
+                                <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                             </div>
                         </div>
                     </article>
@@ -721,8 +680,8 @@
                                                 </button>
                                             </div>
                                             <h3>Taza a Lunares</h3>
-                                            <p>$ 400.00</p>
-                                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                            <p>$ 400,00</p>
+                                            <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                                         </div>
                                     </div>
                                 </article>
@@ -747,8 +706,8 @@
                                                 </button>
                                             </div>
                                             <h3>Taza con Rayas</h3>
-                                            <p>$ 400.00</p>
-                                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                            <p>$ 400,00</p>
+                                            <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                                         </div>
                                     </div>
                                 </article>
@@ -772,8 +731,8 @@
                                                 </button>
                                             </div>
                                             <h3>Taza con Leyenda</h3>
-                                            <p>$ 400.00</p>
-                                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                            <p>$ 400,00</p>
+                                            <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                                         </div>
                                     </div>
                                 </article>
@@ -795,8 +754,8 @@
                                                 </button>
                                             </div>
                                             <h3>Taza Love x Life</h3>
-                                            <p>$ 400.00</p>
-                                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                            <p>$ 400,00</p>
+                                            <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                                         </div>
                                     </div>
                                 </article>
@@ -820,8 +779,8 @@
                                                 </button>
                                             </div>
                                             <h3>Taza Gastada</h3>
-                                            <p>$ 400.00</p>
-                                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                            <p>$ 400,00</p>
+                                            <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                                         </div>
                                     </div>
                                 </article>
@@ -844,8 +803,8 @@
                                                 </button>
                                             </div>
                                             <h3>Tazas Naranjas</h3>
-                                            <p>$ 600.00</p>
-                                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                            <p>$ 600,00</p>
+                                            <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                                         </div>
                                     </div>
                                 </article>
@@ -870,8 +829,8 @@
                                                 </button>
                                             </div>
                                             <h3>Taza Abrigo</h3>
-                                            <p>$ 450.00</p>
-                                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                            <p>$ 450,00</p>
+                                            <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                                         </div>
                                     </div>
                                 </article>
@@ -893,8 +852,8 @@
                                                 </button>
                                             </div>
                                             <h3>Taza Corazón</h3>
-                                            <p>$ 423.00</p>
-                                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                            <p>$ 423,00</p>
+                                            <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                                         </div>
                                     </div>
                                 </article>
@@ -915,8 +874,8 @@
 
                 <div class="row w-100">
                     <div class="product__section-productos-div">
-                        <div>
-                            <a class="product__section-productos-div-a" href="../index.html">MÁS PRODUCTOS</a>
+                        <div id="botonTaza">
+                            <a  class="product__section-productos-div-a" href="#/masTazas">MÁS PRODUCTOS</a>
                         </div>
                     </div>
                 </div>
@@ -931,7 +890,7 @@
             </div>
 
             <section class="product__section-productos">
-                <div class="row w-100 ml-0 mr-0  product__section-productos-responsive">
+                <div id="tazonContainer" class="row w-100 ml-0 mr-0  product__section-productos-responsive">
                     <article class="flip-card col-lg-3 col-md-4">
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
@@ -949,8 +908,8 @@
                                     </button>
                                 </div>
                                 <h3>Tazón Ovalado Blanco</h3>
-                                <p>$ 500.00</p>
-                                <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                <p>$ 500,00</p>
+                                <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                             </div>
                         </div>
                     </article>
@@ -975,8 +934,8 @@
                                     </button>
                                 </div>
                                 <h3>Tazónes Color Celeste</h3>
-                                <p>$ 1200.00</p>
-                                <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                <p>$ 1200,00</p>
+                                <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                             </div>
                         </div>
                     </article>
@@ -998,8 +957,8 @@
                                     </button>
                                 </div>
                                 <h3>Tazón Ovalado Azul</h3>
-                                <p>$ 500.00</p>
-                                <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                <p>$ 500,00</p>
+                                <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                             </div>
                         </div>
                     </article>
@@ -1023,8 +982,8 @@
                                     </button>
                                 </div>
                                 <h3>Tazón Estilo Madera</h3>
-                                <p>$ 600.00</p>
-                                <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                <p>$ 600,00</p>
+                                <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                             </div>
                         </div>
                     </article>
@@ -1049,8 +1008,8 @@
                                     </button>
                                 </div>
                                 <h3>Tazón Arcoiris</h3>
-                                <p>$ 500.00</p>
-                                <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                <p>$ 500,00</p>
+                                <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                             </div>
                         </div>
                     </article>
@@ -1072,8 +1031,8 @@
                                     </button>
                                 </div>
                                 <h3>Tazón Corazón</h3>
-                                <p>$ 500.00</p>
-                                <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                <p>$ 500,00</p>
+                                <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                             </div>
                         </div>
                     </article>
@@ -1096,8 +1055,8 @@
                                     </button>
                                 </div>
                                 <h3>Tazón Blanco</h3>
-                                <p>$ 500.00</p>
-                                <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                <p>$ 500,00</p>
+                                <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                             </div>
                         </div>
                     </article>
@@ -1119,8 +1078,8 @@
                                     </button>
                                 </div>
                                 <h3>Tazón Estilo Canasta</h3>
-                                <p>$ 500.00</p>
-                                <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                <p>$ 500,00</p>
+                                <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                             </div>
                         </div>
                     </article>
@@ -1150,8 +1109,8 @@
                                                 </button>
                                             </div>
                                             <h3>Tazón Estilo Madera</h3>
-                                            <p>$ 600.00</p>
-                                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                            <p>$ 600,00</p>
+                                            <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                                         </div>
                                     </div>
                                 </article>
@@ -1176,8 +1135,8 @@
                                                 </button>
                                             </div>
                                             <h3>Tazón Estilo Canasta</h3>
-                                            <p>$ 500.00</p>
-                                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                            <p>$ 500,00</p>
+                                            <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                                         </div>
                                     </div>
                                 </article>
@@ -1201,8 +1160,8 @@
                                                 </button>
                                             </div>
                                             <h3>Tazón Blanco</h3>
-                                            <p>$ 500.00</p>
-                                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                            <p>$ 500,00</p>
+                                            <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                                         </div>
                                     </div>
                                 </article>
@@ -1224,8 +1183,8 @@
                                                 </button>
                                             </div>
                                             <h3>Tazón Corazón</h3>
-                                            <p>$ 500.00</p>
-                                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                            <p>$ 500,00</p>
+                                            <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                                         </div>
                                     </div>
                                 </article>
@@ -1249,8 +1208,8 @@
                                                 </button>
                                             </div>
                                             <h3>Tazón Arcoiris</h3>
-                                            <p>$ 500.00</p>
-                                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                            <p>$ 500,00</p>
+                                            <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                                         </div>
                                     </div>
                                 </article>
@@ -1273,8 +1232,8 @@
                                                 </button>
                                             </div>
                                             <h3>Tazón Ovalado Azul</h3>
-                                            <p>$ 500.00</p>
-                                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                            <p>$ 500,00</p>
+                                            <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                                         </div>
                                     </div>
                                 </article>
@@ -1299,8 +1258,8 @@
                                                 </button>
                                             </div>
                                             <h3>Tazónes Color Celeste</h3>
-                                            <p>$ 1200.00</p>
-                                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                            <p>$ 1200,00</p>
+                                            <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                                         </div>
                                     </div>
                                 </article>
@@ -1322,8 +1281,8 @@
                                                 </button>
                                             </div>
                                             <h3>Tazón Ovalado Blanco</h3>
-                                            <p>$ 500.00</p>
-                                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                            <p>$ 500,00</p>
+                                            <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
                                         </div>
                                     </div>
                                 </article>
@@ -1345,7 +1304,7 @@
                 <div class="row w-100">
                     <div class="product__section-productos-div">
                         <div>
-                            <a class="product__section-productos-div-a" href="../index.html">MÁS
+                            <a class="product__section-productos-div-a" href="#/masTazones">MÁS
                                 PRODUCTOS</a>
                         </div>
                     </div>
@@ -1777,6 +1736,12 @@
 
     </footer>
 </body>
+<!-- Js destinado al proyecto del carrito -->
+<!-- <script type="text/javascript" src="../Ejercicios/carritoProyecto.js"></script> -->
+<script  type="module" src="../Ejercicios/carritoProductos.js"></script>
+<!-- <script  type="module" src="../Ejercicios/scriptsDb/db.js"></script> -->
+
+<!-- JS destinado al proyecto de Desarrollo Web -->
 <script type="text/javascript" src="../js/headerFixed.js"></script>
 <script type="text/javascript" src="../js/buscadorHeader.js"></script>
 <script type="text/javascript" src="../js/buscadorProductos.js"></script>
