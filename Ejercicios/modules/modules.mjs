@@ -1,19 +1,14 @@
-// import {eventUl, buttonCarrito, aButtonProducts} from '../modules';
-
 let arrayTazas = [];
 let arrayTazones = [];
 let arrayTermos = [];
 let newArrayForPages = [];
-let html;
+
+//  Funciones de la db.
 
 async function fetchInfo () {
     return await fetch('../db/dbProductos.json');
 }
 
-window.addEventListener('hashchange',function () {
-    eventUl(buttonCarrito, aButtonProducts);
-    router;
-});
 
 const splitDataDb = (array, key) => {
     let arrayType = [];
@@ -29,9 +24,6 @@ const splitDataDb = (array, key) => {
     arrayTazas = [...array.filter( type => type.tipo === arrayType[1])];
     arrayTermos = [...array.filter( type => type.tipo === arrayType[2])];
 
-    console.log(arrayTazas)
-    // console.log(arrayTazones)
-    // console.log(arrayTermos)
 }
 
 function createArticle (array, index) {
@@ -68,7 +60,7 @@ function createArticle (array, index) {
                     </div>
                     <h3>${taza.nombre}</h3>
                     <p>${taza.precio}</p>
-                    <a class="btn btn-outline-danger addToCart" type="button">CONSULTÁ</a>
+                   <a class="btn btn-outline-danger addToCart" addToCart" type="button">AGREGAR</a>
                 </div>
             </div>
         `
@@ -97,11 +89,11 @@ function createView(array){
     let arrayId = [];
 
     let pages = Math.round(array.length / 60);
-    console.log(pages)
 
-    for(let i = 0; i <= pages; i++){
+    for(let i = 1; i <= pages; i++){
         newArrayForPages.push(array.splice(0, 60));
     }
+
 
     createArticle(newArrayForPages, 0);
 
@@ -118,7 +110,9 @@ function createView(array){
         a.classList.add('page-link');
         a.textContent = j;
         a.setAttribute('id', `productsPage-${j}`);
-        a.setAttribute('href', `#tazas`);
+       
+
+        a.setAttribute('href', `#${String(newArrayForPages[0][0].tipo).toLowerCase()}`);
 
         arrayId.push(`productsPage-${j}`);
 
@@ -129,9 +123,10 @@ function createView(array){
     ul.addEventListener('click', (e) => {
 
         for(let i = 0; i < ul.children.length; i++){
+
             let classList = ul.children.item(i).classList;
             if(classList.contains('active')){
-                ul.children.item(i).classList.remove('active')
+                ul.children.item(i).classList.remove('active');
             }
         }
 
@@ -140,12 +135,14 @@ function createView(array){
             const linkPage = document.querySelector(`#${e.target.id}`);
             linkPage.parentElement.classList.add('active')
             container.removeChild(container.children[3]);
-            createArticle(newArrayForPages, Number(linkPage.textContent));
+            createArticle(newArrayForPages, (Number(linkPage.textContent) - 1));
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0;
         }
     })
 }
 
-const ProductoComponent = {
+const Producto1Component = {
     render: () => {
         return `
 
@@ -206,7 +203,7 @@ const ProductoComponent = {
                             </div>
                             <h3>Taza a Lunares</h3>
                             <p>$ 400.00</p>
-                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                           <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                         </div>
                     </div>
                 </article>
@@ -232,7 +229,7 @@ const ProductoComponent = {
                             </div>
                             <h3>Taza con Rayas</h3>
                             <p>$ 400.00</p>
-                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                           <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                         </div>
                     </div>
                 </article>
@@ -256,7 +253,7 @@ const ProductoComponent = {
                             </div>
                             <h3>Taza con Leyenda</h3>
                             <p>$ 400.00</p>
-                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                           <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                         </div>
                     </div>
                 </article>
@@ -281,7 +278,7 @@ const ProductoComponent = {
                             </div>
                             <h3>Taza Love x Life</h3>
                             <p>$ 400.00</p>
-                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                           <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                         </div>
                     </div>
                 </article>
@@ -307,7 +304,7 @@ const ProductoComponent = {
                             </div>
                             <h3>Taza Gastada</h3>
                             <p>$ 400.00</p>
-                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                           <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                         </div>
                     </div>
                 </article>
@@ -331,7 +328,7 @@ const ProductoComponent = {
                             </div>
                             <h3>Tazas Naranjas</h3>
                             <p>$ 600.00</p>
-                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                           <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                         </div>
                     </div>
                 </article>
@@ -355,7 +352,7 @@ const ProductoComponent = {
                             </div>
                             <h3>Taza Abrigo</h3>
                             <p>$ 450.00</p>
-                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                           <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                         </div>
                     </div>
                 </article>
@@ -378,7 +375,7 @@ const ProductoComponent = {
                             </div>
                             <h3>Taza Corazón</h3>
                             <p>$ 423.00</p>
-                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                           <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                         </div>
                     </div>
                 </article>
@@ -409,7 +406,7 @@ const ProductoComponent = {
                                         </div>
                                         <h3>Taza a Lunares</h3>
                                         <p>$ 400.00</p>
-                                        <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                       <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                                     </div>
                                 </div>
                             </article>
@@ -435,7 +432,7 @@ const ProductoComponent = {
                                         </div>
                                         <h3>Taza con Rayas</h3>
                                         <p>$ 400.00</p>
-                                        <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                       <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                                     </div>
                                 </div>
                             </article>
@@ -460,7 +457,7 @@ const ProductoComponent = {
                                         </div>
                                         <h3>Taza con Leyenda</h3>
                                         <p>$ 400.00</p>
-                                        <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                       <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                                     </div>
                                 </div>
                             </article>
@@ -483,7 +480,7 @@ const ProductoComponent = {
                                         </div>
                                         <h3>Taza Love x Life</h3>
                                         <p>$ 400.00</p>
-                                        <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                       <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                                     </div>
                                 </div>
                             </article>
@@ -508,7 +505,7 @@ const ProductoComponent = {
                                         </div>
                                         <h3>Taza Gastada</h3>
                                         <p>$ 400.00</p>
-                                        <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                       <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                                     </div>
                                 </div>
                             </article>
@@ -532,7 +529,7 @@ const ProductoComponent = {
                                         </div>
                                         <h3>Tazas Naranjas</h3>
                                         <p>$ 600.00</p>
-                                        <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                       <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                                     </div>
                                 </div>
                             </article>
@@ -558,7 +555,7 @@ const ProductoComponent = {
                                         </div>
                                         <h3>Taza Abrigo</h3>
                                         <p>$ 450.00</p>
-                                        <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                       <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                                     </div>
                                 </div>
                             </article>
@@ -581,7 +578,7 @@ const ProductoComponent = {
                                         </div>
                                         <h3>Taza Corazón</h3>
                                         <p>$ 423.00</p>
-                                        <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                       <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                                     </div>
                                 </div>
                             </article>
@@ -637,7 +634,7 @@ const ProductoComponent = {
                             </div>
                             <h3>Tazón Ovalado Blanco</h3>
                             <p>$ 500.00</p>
-                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                           <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                         </div>
                     </div>
                 </article>
@@ -663,7 +660,7 @@ const ProductoComponent = {
                             </div>
                             <h3>Tazónes Color Celeste</h3>
                             <p>$ 1200.00</p>
-                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                           <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                         </div>
                     </div>
                 </article>
@@ -686,7 +683,7 @@ const ProductoComponent = {
                             </div>
                             <h3>Tazón Ovalado Azul</h3>
                             <p>$ 500.00</p>
-                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                           <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                         </div>
                     </div>
                 </article>
@@ -711,7 +708,7 @@ const ProductoComponent = {
                             </div>
                             <h3>Tazón Estilo Madera</h3>
                             <p>$ 600.00</p>
-                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                           <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                         </div>
                     </div>
                 </article>
@@ -737,7 +734,7 @@ const ProductoComponent = {
                             </div>
                             <h3>Tazón Arcoiris</h3>
                             <p>$ 500.00</p>
-                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                           <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                         </div>
                     </div>
                 </article>
@@ -760,7 +757,7 @@ const ProductoComponent = {
                             </div>
                             <h3>Tazón Corazón</h3>
                             <p>$ 500.00</p>
-                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                           <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                         </div>
                     </div>
                 </article>
@@ -784,7 +781,7 @@ const ProductoComponent = {
                             </div>
                             <h3>Tazón Blanco</h3>
                             <p>$ 500.00</p>
-                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                           <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                         </div>
                     </div>
                 </article>
@@ -807,7 +804,7 @@ const ProductoComponent = {
                             </div>
                             <h3>Tazón Estilo Canasta</h3>
                             <p>$ 500.00</p>
-                            <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                           <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                         </div>
                     </div>
                 </article>
@@ -838,7 +835,7 @@ const ProductoComponent = {
                                         </div>
                                         <h3>Tazón Estilo Madera</h3>
                                         <p>$ 600.00</p>
-                                        <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                       <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                                     </div>
                                 </div>
                             </article>
@@ -864,7 +861,7 @@ const ProductoComponent = {
                                         </div>
                                         <h3>Tazón Estilo Canasta</h3>
                                         <p>$ 500.00</p>
-                                        <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                       <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                                     </div>
                                 </div>
                             </article>
@@ -889,7 +886,7 @@ const ProductoComponent = {
                                         </div>
                                         <h3>Tazón Blanco</h3>
                                         <p>$ 500.00</p>
-                                        <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                       <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                                     </div>
                                 </div>
                             </article>
@@ -912,7 +909,7 @@ const ProductoComponent = {
                                         </div>
                                         <h3>Tazón Corazón</h3>
                                         <p>$ 500.00</p>
-                                        <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                       <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                                     </div>
                                 </div>
                             </article>
@@ -937,7 +934,7 @@ const ProductoComponent = {
                                         </div>
                                         <h3>Tazón Arcoiris</h3>
                                         <p>$ 500.00</p>
-                                        <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                       <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                                     </div>
                                 </div>
                             </article>
@@ -961,7 +958,7 @@ const ProductoComponent = {
                                         </div>
                                         <h3>Tazón Ovalado Azul</h3>
                                         <p>$ 500.00</p>
-                                        <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                       <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                                     </div>
                                 </div>
                             </article>
@@ -987,7 +984,7 @@ const ProductoComponent = {
                                         </div>
                                         <h3>Tazónes Color Celeste</h3>
                                         <p>$ 1200.00</p>
-                                        <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                       <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                                     </div>
                                 </div>
                             </article>
@@ -1010,7 +1007,725 @@ const ProductoComponent = {
                                         </div>
                                         <h3>Tazón Ovalado Blanco</h3>
                                         <p>$ 500.00</p>
-                                        <a class="btn btn-outline-danger" href="./contacto.html">CONSULTÁ</a>
+                                       <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev carouselProductos__controlls carouselProductos__controlls--prev"
+                        href="#carouselProductos-productosTazones" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next carouselProductos__controlls carouselProductos__controlls--next"
+                        href="#carouselProductos-productosTazones" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row w-100">
+                <div class="product__section-productos-div">
+                    <div>
+                        <a class="product__section-productos-div-a" href="#/masTazones">MÁS
+                            PRODUCTOS</a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Botonera para cambiar página -->
+        <nav class="products__navbar" aria-label="...">
+            <ul class="pagination pagination-lg">
+                <li class="page-item active" aria-current="page">
+                    <span class="page-link">
+                        1
+                        <span class="sr-only">(current)</span>
+                    </span>
+                </li>
+                <li class="page-item"><a class="page-link" href="./productos2.html">2</a></li>
+            </ul>
+        </nav>
+    </div>
+        `
+    }
+}
+
+const Producto2Component = {
+    render: () => {
+        return    ` <div class="products__title product__title-flex">
+            <h2 class="product__title-h2--form">NUESTROS PRODUCTOS</h2>
+
+            <div class="product__title-div">
+                <input type="search">
+                <button type="submit">L</button>
+            </div>
+
+            <!-- Se activan con el boton "BUSCAR" -->
+            <div class="product__title-divResponsive invisible">
+                <input type="search">
+                <button type="submit">L</button>
+            </div>
+
+            <div class="product__title-button">
+                <button type="button" class="btn btn-danger mt-0 product__title-button-buscar">BUSCADOR</button>
+            </div>
+
+            <div class="product__title-menu">
+                <ul class="product__title-menu-ul">
+                    <li><a href="./productos.html#tazas">TAZAS</a></li>
+                    <li><a href="./productos.html#tazones">TAZONES</a></li>
+                    <li><a href="#termos">TERMOS</a></li>
+                    <li class="li-outmargin"><a href="#cafes" class="a-outmargin" href="">CAFÉ</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Título y seccion para tazas -->
+        <div class="products__div">
+            <h3 id="termos">TERMOS</h3>
+        </div>
+
+        <section class="product__section-productos">
+
+            <div id='tazaContainer' class="row w-100 ml-0 mr-0 product__section-productos-responsive">
+                <article class="flip-card col-lg-3 col-md-4">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="../assets/imgs/termoGris.jpg" alt="Termo Plateado">
+                        </div>
+                        <div class="flip-card-back">
+                            <div
+                                class="row w-100 d-flex flex-row justify-content-between position-relative product__section-productos-like">
+                                <button type="button" class="mr-0 ml-3">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+
+                                <button type="button">
+                                    <i class="far fa-heart visible heart_1"></i>
+                                    <i class="fas fa-heart invisible like_1"></i>
+                                </button>
+                            </div>
+                            <h3>Termo Plateado</h3>
+                            <p>$ 800.00</p>
+                            <a class="btn btn-outline-danger addToCart">AGREGAR</a>
+                        </div>
+                    </div>
+                </article>
+
+
+
+
+                <article class="flip-card col-lg-3 col-md-4">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="../assets/imgs/termoRojo.jpg" alt="Termo Rojo y Blanco">
+                        </div>
+                        <div class="flip-card-back">
+                            <div
+                                class="row w-100 d-flex flex-row justify-content-between position-relative product__section-productos-like">
+                                <button type="button" class="mr-0 ml-3">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                                <button type="button">
+                                    <i class="far fa-heart visible heart_2"></i>
+                                    <i class="fas fa-heart invisible like_2"></i>
+                                </button>
+                            </div>
+                            <h3>Termo Rojo y Blanco</h3>
+                            <p>$ 800.00</p>
+                            <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
+                        </div>
+                    </div>
+                </article>
+
+
+                <article class="flip-card col-lg-3 col-md-4">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="../assets/imgs/TermoRojoTazas.jpg" alt="Termo Rojo Bordado">
+                        </div>
+                        <div class="flip-card-back">
+                            <div
+                                class="row w-100 d-flex flex-row justify-content-between position-relative product__section-productos-like">
+                                <button type="button" class="mr-0 ml-3">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                                <button type="button">
+                                    <i class="far fa-heart visible heart_3"></i>
+                                    <i class="fas fa-heart invisible like_3"></i>
+                                </button>
+                            </div>
+                            <h3>Termo Rojo Bordado</h3>
+                            <p>$ 800.00</p>
+                            <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
+                        </div>
+                    </div>
+                </article>
+
+
+
+                <article class="flip-card col-lg-3 flip-card--none">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="../assets/imgs/TermoPicnic.jpg" alt="Termo Beige">
+                        </div>
+                        <div class="flip-card-back">
+                            <div
+                                class="row w-100 d-flex flex-row justify-content-between position-relative product__section-productos-like">
+                                <button type="button" class="mr-0 ml-3">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                                <button type="button">
+                                    <i class="far fa-heart visible heart_4"></i>
+                                    <i class="fas fa-heart invisible like_4"></i>
+                                </button>
+                            </div>
+                            <h3>Termo Beige</h3>
+                            <p>$ 800.00</p>
+                            <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+
+            <div class="row w-100 ml-0 mr-0 product__section-productos-responsive">
+                <article class="flip-card col-lg-3 col-md-4">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="../assets/imgs/termoHijos.jpg" alt="Termo Verde">
+                        </div>
+                        <div class="flip-card-back">
+                            <div
+                                class="row w-100 d-flex flex-row justify-content-between position-relative product__section-productos-like">
+                                <button type="button" class="mr-0 ml-3">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                                <button type="button">
+                                    <i class="far fa-heart visible heart_5"></i>
+                                    <i class="fas fa-heart invisible like_5"></i>
+                                </button>
+                            </div>
+                            <h3>Termo Verde</h3>
+                            <p>$ 800.00</p>
+                            <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
+                        </div>
+                    </div>
+                </article>
+
+
+                <article class="flip-card col-lg-3 col-md-4">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="../assets/imgs/termoStanley.jpg" alt="Termo Stanley">
+                        </div>
+                        <div class="flip-card-back">
+                            <div
+                                class="row w-100 d-flex flex-row justify-content-between position-relative product__section-productos-like">
+                                <button type="button" class="mr-0 ml-3">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                                <button type="button">
+                                    <i class="far fa-heart visible heart_6"></i>
+                                    <i class="fas fa-heart invisible like_6"></i>
+                                </button>
+                            </div>
+                            <h3>Termo Stanley</h3>
+                            <p>$ 800.00</p>
+                            <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
+                        </div>
+                    </div>
+                </article>
+
+
+                <article class="flip-card col-lg-3 col-md-4">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="../assets/imgs/TermoPiso.jpg" alt="Termo Personal Stanley">
+                        </div>
+                        <div class="flip-card-back">
+                            <div
+                                class="row w-100 d-flex flex-row justify-content-between position-relative product__section-productos-like">
+                                <button type="button" class="mr-0 ml-3">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                                <button type="button">
+                                    <i class="far fa-heart visible heart_7"></i>
+                                    <i class="fas fa-heart invisible like_7"></i>
+                                </button>
+                            </div>
+                            <h3>Termo Personal Stanley</h3>
+                            <p>$ 800.00</p>
+                            <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="flip-card col-lg-3 flip-card--none">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="../assets/imgs/termoLago.jpg" alt="Termo Rojo Metalizado">
+                        </div>
+                        <div class="flip-card-back">
+                            <div
+                                class="row w-100 d-flex flex-row justify-content-between position-relative product__section-productos-like">
+                                <button type="button" class="mr-0 ml-3">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                                <button type="button">
+                                    <i class="far fa-heart visible heart_8"></i>
+                                    <i class="fas fa-heart invisible like_8"></i>
+                                </button>
+                            </div>
+                            <h3>Termo Rojo Metalizado</h3>
+                            <p>$ 800.00</p>
+                            <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="container-fluid carouselProductos p-0">
+                <div id="carouselProductos-productosTazas" class="carousel slide d-flex justify-content-center"
+                    data-ride="carousel">
+                    <div
+                        class="carousel-inner w-100 d-flex flex-row justify-content-center carouselProductos__container">
+                        <div class="carousel-item  active carouselProductos__container-slider">
+                            <article class="flip-card col-lg-3 col-md-6">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img src="../assets/imgs/termoGris.jpg" alt="ProdTermo Plateadoucto">
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <div
+                                            class="row w-100 d-flex flex-row justify-content-between position-relative product__section-productos-like">
+                                            <button type="button" class="mr-0 ml-3">
+                                                <i class="fas fa-share-alt"></i>
+                                            </button>
+
+                                            <button type="button">
+                                                <i class="far fa-heart visible heart_1"></i>
+                                                <i class="fas fa-heart invisible like_1"></i>
+                                            </button>
+                                        </div>
+                                        <h3>Termo Plateado</h3>
+                                        <p>$ 800.00</p>
+                                        <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
+                                    </div>
+                                </div>
+                            </article>
+
+
+
+
+                            <article class="flip-card col-lg-3 col-md-6">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img src="../assets/imgs/termoRojo.jpg" alt="Termo Rojo y Blanco">
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <div
+                                            class="row w-100 d-flex flex-row justify-content-between position-relative product__section-productos-like">
+                                            <button type="button" class="mr-0 ml-3">
+                                                <i class="fas fa-share-alt"></i>
+                                            </button>
+                                            <button type="button">
+                                                <i class="far fa-heart visible heart_2"></i>
+                                                <i class="fas fa-heart invisible like_2"></i>
+                                            </button>
+                                        </div>
+                                        <h3>Termo Rojo y Blanco</h3>
+                                        <p>$ 800.00</p>
+                                        <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="carousel-item carouselProductos__container-slider">
+                            <article class="flip-card col-lg-3 col-md-">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img src="../assets/imgs/TermoRojoTazas.jpg" alt="Termo Rojo Bordado">
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <div
+                                            class="row w-100 d-flex flex-row justify-content-between position-relative product__section-productos-like">
+                                            <button type="button" class="mr-0 ml-3">
+                                                <i class="fas fa-share-alt"></i>
+                                            </button>
+                                            <button type="button">
+                                                <i class="far fa-heart visible heart_3"></i>
+                                                <i class="fas fa-heart invisible like_3"></i>
+                                            </button>
+                                        </div>
+                                        <h3>Termo Rojo Bordado</h3>
+                                        <p>$ 800.00</p>
+                                        <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="flip-card col-lg-3 col-md-6">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img src="../assets/imgs/TermoPicnic.jpg" alt="Termo Beige">
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <div
+                                            class="row w-100 d-flex flex-row justify-content-between position-relative product__section-productos-like">
+                                            <button type="button" class="mr-0 ml-3">
+                                                <i class="fas fa-share-alt"></i>
+                                            </button>
+                                            <button type="button">
+                                                <i class="far fa-heart visible heart_4"></i>
+                                                <i class="fas fa-heart invisible like_4"></i>
+                                            </button>
+                                        </div>
+                                        <h3>Termo Beige</h3>
+                                        <p>$ 800.00</p>
+                                        <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="carousel-item carouselProductos__container-slider">
+                            <article class="flip-card col-lg-3 col-md-6">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img src="../assets/imgs/termoHijos.jpg" alt="Termo Verde">
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <div
+                                            class="row w-100 d-flex flex-row justify-content-between position-relative product__section-productos-like">
+                                            <button type="button" class="mr-0 ml-3">
+                                                <i class="fas fa-share-alt"></i>
+                                            </button>
+                                            <button type="button">
+                                                <i class="far fa-heart visible heart_5"></i>
+                                                <i class="fas fa-heart invisible like_5"></i>
+                                            </button>
+                                        </div>
+                                        <h3>Termo Verde</h3>
+                                        <p>$ 800.00</p>
+                                        <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
+                                    </div>
+                                </div>
+                            </article>
+
+
+                            <article class="flip-card col-lg-3 col-md-6">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img src="../assets/imgs/termoStanley.jpg" alt="Termo Stanley">
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <div
+                                            class="row w-100 d-flex flex-row justify-content-between position-relative product__section-productos-like">
+                                            <button type="button" class="mr-0 ml-3">
+                                                <i class="fas fa-share-alt"></i>
+                                            </button>
+                                            <button type="button">
+                                                <i class="far fa-heart visible heart_6"></i>
+                                                <i class="fas fa-heart invisible like_6"></i>
+                                            </button>
+                                        </div>
+                                        <h3>Termo Stanley</h3>
+                                        <p>$ 800.00</p>
+                                        <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
+                                    </div>
+                                </div>
+                            </article>
+
+                        </div>
+                        <div class="carousel-item carouselProductos__container-slider">
+
+                            <article class="flip-card col-lg-3 col-md-6">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img src="../assets/imgs/TermoPiso.jpg" alt="Termo Personal Stanley">
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <div
+                                            class="row w-100 d-flex flex-row justify-content-between position-relative product__section-productos-like">
+                                            <button type="button" class="mr-0 ml-3">
+                                                <i class="fas fa-share-alt"></i>
+                                            </button>
+                                            <button type="button">
+                                                <i class="far fa-heart visible heart_7"></i>
+                                                <i class="fas fa-heart invisible like_7"></i>
+                                            </button>
+                                        </div>
+                                        <h3>Termo Personal Stanley</h3>
+                                        <p>$ 800.00</p>
+                                        <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="flip-card col-lg-3 col-md-6">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img src="../assets/imgs/termoLago.jpg" alt="Termo Rojo Metalizado">
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <div
+                                            class="row w-100 d-flex flex-row justify-content-between position-relative product__section-productos-like">
+                                            <button type="button" class="mr-0 ml-3">
+                                                <i class="fas fa-share-alt"></i>
+                                            </button>
+                                            <button type="button">
+                                                <i class="far fa-heart visible heart_8"></i>
+                                                <i class="fas fa-heart invisible like_8"></i>
+                                            </button>
+                                        </div>
+                                        <h3>Termo Rojo Metalizado</h3>
+                                        <p>$ 800.00</p>
+                                        <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev carouselProductos__controlls carouselProductos__controlls--prev"
+                        href="#carouselProductos-productosTazas" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next carouselProductos__controlls carouselProductos__controlls--next"
+                        href="#carouselProductos-productosTazas" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row w-100">
+                <div class="product__section-productos-div">
+                    <div>
+                        <a class="product__section-productos-div-a" href="../index.html">MÁS PRODUCTOS</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </section>
+
+        <!-- Título y seccion para café -->
+        <div class="products__div products__div--margin">
+            <h3 id="cafes">CAFÉ</h3>
+        </div>
+
+        <section class="product__section-productos">
+            <div class="row w-100 ml-0 mr-0  product__section-productos-responsive">
+                <article class="flip-card col-lg-3 col-md-4">
+
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="../assets/imgs/cafeSuave.jpg" alt="Café Suave">
+                        </div>
+                        <div class="flip-card-back">
+                            <div
+                                class="row w-100 d-flex flex-row justify-content-between position-relative product__section-productos-like">
+                                <button type="button" class="mr-0 ml-3">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                                <button type="button">
+                                    <i class="far fa-heart visible heart_16"></i>
+                                    <i class="fas fa-heart invisible like_16"></i>
+                                </button>
+                            </div>
+                            <h3>Café Suave</h3>
+                            <p>$ 950.00 </p>
+                            <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
+                        </div>
+                    </div>
+                </article>
+
+
+
+
+                <article class="flip-card col-lg-3 col-md-4">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="../assets/imgs/cafeOscuro.jpg" alt="Café Oscuro">
+                        </div>
+                        <div class="flip-card-back">
+                            <div
+                                class="row w-100 d-flex flex-row justify-content-between position-relative product__section-productos-like">
+                                <button type="button" class="mr-0 ml-3">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                                <button type="button">
+                                    <i class="far fa-heart visible heart_16"></i>
+                                    <i class="fas fa-heart invisible like_16"></i>
+                                </button>
+                            </div>
+                            <h3>Café Oscuro</h3>
+                            <p>$ 800.00 </p>
+                            <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="flip-card col-lg-3 col-md-4">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="../assets/imgs/cafeMolido.jpg" alt="Café Oscuro Molido">
+                        </div>
+                        <div class="flip-card-back">
+                            <div
+                                class="row w-100 d-flex flex-row justify-content-between position-relative product__section-productos-like">
+                                <button type="button" class="mr-0 ml-3">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                                <button type="button">
+                                    <i class="far fa-heart visible heart_16"></i>
+                                    <i class="fas fa-heart invisible like_16"></i>
+                                </button>
+                            </div>
+                            <h3>Café Oscuro Molido</h3>
+                            <p>$ 900.00 </p>
+                            <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
+                        </div>
+                    </div>
+                </article>
+
+
+
+                <article class="flip-card col-lg-3 flip-card--none">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="../assets/imgs/cafeCapuchino.jpg" alt="Café Capuchino">
+                        </div>
+                        <div class="flip-card-back">
+                            <div
+                                class="row w-100 d-flex flex-row justify-content-between position-relative product__section-productos-like">
+                                <button type="button" class="mr-0 ml-3">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                                <button type="button">
+                                    <i class="far fa-heart visible heart_16"></i>
+                                    <i class="fas fa-heart invisible like_16"></i>
+                                </button>
+                            </div>
+                            <h3>Café Capuchino</h3>
+                            <p>$ 900.00 </p>
+                            <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="container-fluid carouselProductos p-0">
+                <div id="carouselProductos-productosTazones" class="carousel slide d-flex justify-content-center"
+                    data-ride="carousel">
+                    <div
+                        class="carousel-inner w-100 d-flex flex-row justify-content-center carouselProductos__container">
+                        <div class="carousel-item  active carouselProductos__container-slider">
+                            <article class="flip-card col-lg-3 col-md-6">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img src="../assets/imgs/cafeOscuro.jpg" alt="Café Oscuro">
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <div
+                                            class="row w-100 d-flex flex-row justify-content-between position-relative product__section-productos-like">
+                                            <button type="button" class="mr-0 ml-3">
+                                                <i class="fas fa-share-alt"></i>
+                                            </button>
+
+                                            <button type="button">
+                                                <i class="far fa-heart visible heart_1"></i>
+                                                <i class="fas fa-heart invisible like_1"></i>
+                                            </button>
+                                        </div>
+
+                                        <h3>Café Oscuro</h3>
+                                        <p>$ 800.00 </p>
+                                        <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
+                                    </div>
+                                </div>
+                            </article>
+
+
+
+
+                            <article class="flip-card col-lg-3 col-md-6">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img src="../assets/imgs/cafeMolido.jpg" alt="Café Oscuro Molido">
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <div
+                                            class="row w-100 d-flex flex-row justify-content-between position-relative product__section-productos-like">
+                                            <button type="button" class="mr-0 ml-3">
+                                                <i class="fas fa-share-alt"></i>
+                                            </button>
+                                            <button type="button">
+                                                <i class="far fa-heart visible heart_2"></i>
+                                                <i class="fas fa-heart invisible like_2"></i>
+                                            </button>
+                                        </div>
+                                        <h3>Café Oscuro Molido</h3>
+                                        <p>$ 900.00 </p>
+                                        <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="carousel-item carouselProductos__container-slider">
+                            <article class="flip-card col-lg-3 col-md-">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img src="../assets/imgs/cafeCapuchino.jpg" alt="Café Capuchino">
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <div
+                                            class="row w-100 d-flex flex-row justify-content-between position-relative product__section-productos-like">
+                                            <button type="button" class="mr-0 ml-3">
+                                                <i class="fas fa-share-alt"></i>
+                                            </button>
+                                            <button type="button">
+                                                <i class="far fa-heart visible heart_3"></i>
+                                                <i class="fas fa-heart invisible like_3"></i>
+                                            </button>
+                                        </div>
+                                        <h3>Café Capuchino</h3>
+                                        <p>$ 900.00 </p>
+                                        <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="flip-card col-lg-3 col-md-6">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img src="../assets/imgs/cafeSuave.jpg" alt="Café Suave">
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <div
+                                            class="row w-100 d-flex flex-row justify-content-between position-relative product__section-productos-like">
+                                            <button type="button" class="mr-0 ml-3">
+                                                <i class="fas fa-share-alt"></i>
+                                            </button>
+                                            <button type="button">
+                                                <i class="far fa-heart visible heart_4"></i>
+                                                <i class="fas fa-heart invisible like_4"></i>
+                                            </button>
+                                        </div>
+                                        <h3>Café Suave</h3>
+                                        <p>$ 950.00 </p>
+                                        <a class="btn btn-outline-danger addToCart" >AGREGAR</a>
                                     </div>
                                 </div>
                             </article>
@@ -1043,17 +1758,15 @@ const ProductoComponent = {
         <!-- Botonera para cambiar página -->
         <nav class="products__navbar" aria-label="...">
             <ul class="pagination pagination-lg">
-                <li class="page-item active" aria-current="page">
-                    <span class="page-link">
+                <li class="page-item" aria-current="page">
+                    <a href="./productos.html" class="page-link">
                         1
-                        <span class="sr-only">(current)</span>
-                    </span>
+                        <!-- <span class="sr-only">(current)</span> -->
+                    </a>
                 </li>
-                <li class="page-item"><a class="page-link" href="./productos2.html">2</a></li>
+                <li class="page-item active"><a class="page-link" href="./productos2.html">2</a></li>
             </ul>
-        </nav>
-    </div>
-        `
+        </nav>`
     }
 }
 
@@ -1081,7 +1794,7 @@ const TazaComponent = {
 
             <div class="product__title-menu">
                 <ul class="product__title-menu-ul">
-                    <li><a href="#/">VOLVER AL MENÚ</a></li>
+                    <li><a id='backToMenu' href="#/productos1">VOLVER AL MENÚ</a></li>
                 </ul>
             </div>
 
@@ -1103,12 +1816,11 @@ const TazaComponent = {
 }
 
 const TazonComponent = {
-    render: (array) => {
+    render: () => {
         return `
-        <div class="products-productos">
 
         <div class="products__title product__title-flex">
-            <h2 class="product__title-h2--form">NUESTROS PRODUCTOS</h2>
+            <h2 class="product__title-h2--form">TAZONES</h2>
 
             <div class="product__title-div">
                 <input type="search">
@@ -1127,8 +1839,7 @@ const TazonComponent = {
 
             <div class="product__title-menu">
                 <ul class="product__title-menu-ul">
-                    <li><a href="#tazas">TAZAS</a></li>
-                    <li><a href="#/">VOLVER AL MENÚ</a></li>
+                    <li><a id='backToMenu' href="#/productos1">VOLVER AL MENÚ</a></li>
                 </ul>
             </div>
 
@@ -1136,40 +1847,25 @@ const TazonComponent = {
 
         <!-- Título y seccion para tazas -->
         <div class="products__div">
-            <h3 id="tazas">TAZAS</h3>
+            <h3 id="tazones">TAZONES</h3>
         </div>
 
-        <section class="product__section-productos">
-            <div id='tazaContainer' class="row w-100 ml-0 mr-0 product__section-productos-responsive">
-                ${createArticle(array)}
-            </div>
-
-        </section>
-
         <!-- Botonera para cambiar página -->
-        <nav class="products__navbar" aria-label="...">
-            <ul class="pagination pagination-lg">
-                <li class="page-item active" aria-current="page">
-                    <span class="page-link">
-                        1
-                        <span class="sr-only">(current)</span>
-                    </span>
-                </li>
-                <li class="page-item"><a class="page-link" href="./productos2.html">2</a></li>
+        <nav class="products__navbar order-1" aria-label="...">
+            <ul id='ulPages' class="pagination pagination-lg">
+
             </ul>
         </nav>
-    </div>
         `
     }
 }
 
 const TermoComponent = {
-    render: (array) => {
-        return `
-        <div class="products-productos">
+    render: () => {
+        return`
 
         <div class="products__title product__title-flex">
-            <h2 class="product__title-h2--form">NUESTROS PRODUCTOS</h2>
+            <h2 class="product__title-h2--form">TERMOS</h2>
 
             <div class="product__title-div">
                 <input type="search">
@@ -1188,8 +1884,7 @@ const TermoComponent = {
 
             <div class="product__title-menu">
                 <ul class="product__title-menu-ul">
-                    <li><a href="#tazas">TAZAS</a></li>
-                    <li><a href="#/">VOLVER AL MENÚ</a></li>
+                    <li><a id='backToMenu' href="#/productos2">VOLVER AL MENÚ</a></li>
                 </ul>
             </div>
 
@@ -1197,26 +1892,13 @@ const TermoComponent = {
 
         <!-- Título y seccion para tazas -->
         <div class="products__div">
-            <h3 id="tazas">TAZAS</h3>
+            <h3 id="termos">TERMOS</h3>
         </div>
 
-        <section class="product__section-productos">
-            <div id='tazaContainer' class="row w-100 ml-0 mr-0 product__section-productos-responsive">
-                ${createArticle(array)}
-            </div>
-
-        </section>
-
         <!-- Botonera para cambiar página -->
-        <nav class="products__navbar" aria-label="...">
-            <ul class="pagination pagination-lg">
-                <li class="page-item active" aria-current="page">
-                    <span class="page-link">
-                        1
-                        <span class="sr-only">(current)</span>
-                    </span>
-                </li>
-                <li class="page-item"><a class="page-link" href="./productos2.html">2</a></li>
+        <nav class="products__navbar order-1" aria-label="...">
+            <ul id='ulPages' class="pagination pagination-lg">
+
             </ul>
         </nav>
         `
@@ -1225,19 +1907,23 @@ const TermoComponent = {
 
 
 const routes = [
-    {path: '/', component: ProductoComponent},
+    {path: '/productos1', component: Producto1Component},
+    {path: '/productos2', component: Producto2Component},
     {path: '/masTazas', component: TazaComponent},
-    // {path: '/tazones', component: TazonComponent},
-    // {path: '/termos', component: TermoComponent}
+    {path: '/masTazones', component: TazonComponent},
+    {path: '/masTermos', component: TermoComponent}
 ]
 
-function router (){
+export function router (funcion){
     const db = fetchInfo();
+
+    // Transformo y comienzo a utilizar los datos descargados de la BD.
     db
     .then(data => data.json())
     .then(data => {
 
         splitDataDb(data, 'tipo');
+
 
         const path = pathFuncion();
 
@@ -1254,11 +1940,13 @@ function router (){
             createView(arrayTazas)
         }
         else if (component === TazonComponent){
+
             createView(arrayTazones)
         }
         else if (component === TermoComponent){
             createView(arrayTermos)
         }
     })
+    .then(() => funcion)
     .catch(error => alert(error))
 }
